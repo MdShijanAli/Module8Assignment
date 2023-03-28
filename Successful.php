@@ -1,6 +1,7 @@
 <?php
 
-$email = $_GET['email'];
+
+$first_name = $_GET['first_name'];
 
 
 ?>
@@ -15,7 +16,7 @@ $email = $_GET['email'];
 <body>
     <?php
 
-    echo "<h1>Welcome, $email!</h1>";
+    echo "<h1>Welcome, $first_name!</h1>";
     ?>
 </body>
 

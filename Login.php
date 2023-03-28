@@ -1,32 +1,13 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+if (isset($_POST['login'])) {
     $email = $_POST['email'];
-    $password = $_POST['password'];
 
-    $errors = [];
+    $_SESSION['success'] = '';
 
-    if (empty($email)) {
-        $errors[] = 'Email address is required';
-    }
-
-    if (empty($password)) {
-        $errors[] = 'Password is required';
-    }
-
-    if (count($errors) == 0) {
-        // If validation is successful, redirect to welcome page
-        session_start();
-        $_SESSION['first_name'] = 'John'; // Replace with actual first name
-        header('Location: welcome.php');
-        exit;
-    } else {
-        // If there are errors, display them below the form
-        echo '<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">';
-        foreach ($errors as $error) {
-            echo '<p>' . $error . '</p>';
-        }
-        echo '</div>';
-    }
+    header('Location: welcome.php?email=' . urlencode($email));
+    exit;
 }
 ?>
 
@@ -61,8 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </label>
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="Enter your password">
                 </div>
+
+
+
                 <div class="flex items-center justify-between">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    <button name="login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                         Login
                     </button>
                 </div>

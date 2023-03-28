@@ -1,5 +1,9 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+
+
+if (isset($_POST['register'])) {
     // Get form data
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
@@ -10,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Save user data to database (you will need to set up your own database)
 
     // Redirect to welcome page
-    header('Location: welcome.php?first_name=' . urlencode($first_name));
+    header('Location: Successful.php?first_name=' . urlencode($first_name));
     exit;
 }
 ?>
@@ -50,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="password" id="confirm_password" name="confirm_password" class="shadow  border rounded w-full py-2 px-3 bg-gray-700 text-white">
             </div>
             <div class="flex items-center  mt-5">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Register</button>
+                <button name="register" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Register</button>
 
             </div>
         </form>
