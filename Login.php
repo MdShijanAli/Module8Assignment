@@ -67,6 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </button>
                 </div>
             </form>
+            <div class=" flex justify-center gap-5 items-center p-5">
+                <p>Do you haven't an account? Please </p>
+                <a href="/Registration.php">
+                    <button class="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Register</button>
+
+                </a>
+            </div>
         </div>
     </div>
 
