@@ -1,10 +1,11 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['register'])) {
     $first_name = test_input($_POST["first_name"]);
     $last_name = test_input($_POST["last_name"]);
     $email = test_input($_POST["email"]);
     $password = test_input($_POST["password"]);
     $confirm_password = test_input($_POST["confirm_password"]);
+
     if (empty($first_name) || empty($last_name) || empty($email) || empty($password) || empty($confirm_password)) {
         $allField = "All fields are  and must not be empty";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -14,6 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         header('location: successfull.html');
     }
+} else {
+    $notError = "";
 }
 
 function test_input($data)
@@ -87,12 +90,24 @@ function test_input($data)
                 }
                 ?>
             </div>
+            <div class="mb-4">
+                <?php
+                if (isset($notError)) {
+                    echo $notError;
+                }
+                ?>
+            </div>
 
 
-            <div class="flex items-center justify-between">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            <div class="flex items-center justify-evenly">
+                <button name="register" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                     Register
                 </button>
+                <a href="/Login.php">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        Login
+                    </button>
+                </a>
             </div>
         </form>
 
